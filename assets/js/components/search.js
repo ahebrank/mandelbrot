@@ -1,14 +1,20 @@
-(function($) {
+'use strict';
 
-  $('#search-input').on('keyup blur change', function () {
-    search(
-      $('#searchid ul')[0], 
-      this.value.toUpperCase()
-    );
-  });
+const $  = global.jQuery;
 
-  function search(list, key) {
-    var i, li = jQu$ery(list).children('li');
+class Search {
+
+  constructor() {
+    $('#search-input').on('keyup blur change', function() {
+      search(
+        $('.Navigation ul')[0], 
+        this.value.toUpperCase()
+      );
+    });
+  }
+
+  search(list, key) {
+    var i, li = $(list).children('li');
     var match = false;
     for (i = 0; i < li.length; i++) {
       var $li = $(li[i]);
@@ -29,5 +35,6 @@
     }
     return match;
   }
+}
 
-})(jQuery);
+module.exports = Search;

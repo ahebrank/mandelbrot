@@ -11,6 +11,7 @@ const utils      = require('./utils');
 const framer     = require('./components/frame');
 const Tree       = require('./components/tree');
 const Pen        = require('./components/pen');
+const Search     = require('./components/search');
 
 global.fractal = {
     events: events
