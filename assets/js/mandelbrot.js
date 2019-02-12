@@ -46,3 +46,5 @@ function loadPen(){
         pens = $.map($('[data-behaviour="pen"]'), p => new Pen(p));
     }, 1);
 }
+
+new Search();

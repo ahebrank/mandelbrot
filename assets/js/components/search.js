@@ -8,17 +8,17 @@ class Search {
     const self = this;
 
     $('#search-input').on('keyup blur change', function() {
-      self.search(
-        $('.Navigation ul')[0], 
-        this.value.toUpperCase()
-      );
+      const key = this.value.toUpperCase();
+      $('.Navigation ul').each(function() {
+        self.search(this, key);
+      });
     });
   }
 
   search(list, key) {
-    var childTree, $li, i;
+    let childTree, $li, i;
     const li = $(list).children('li');
-    var match = false;
+    let match = false;
 
     for (i = 0; i < li.length; i++) {
       $li = $(li[i]);
@@ -26,12 +26,12 @@ class Search {
 
       if ($li.parents('.Tree-collection').find('> .Tree-collectionLabel').text().toUpperCase().indexOf(key) !== -1 || 
           $li.text().toUpperCase().indexOf(key) !== -1 || 
-          $li.find('[data-tags]').attr('data-tags').toUpperCase().indexOf(key) !== -1
+          ($li.find('[data-tags]').length > 0 && $li.find('[data-tags]').attr('data-tags').toUpperCase().indexOf(key) !== -1)
       ) {
         match = true;
         $li.parents('.Tree-collection').removeClass('is-closed');
         $li.show();
-        search(childTree, key);
+        this.search(childTree, key);
       } else {
         match = false;
         $li.hide();
