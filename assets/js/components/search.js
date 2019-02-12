@@ -5,8 +5,10 @@ const $  = global.jQuery;
 class Search {
 
   constructor() {
+    const self = this;
+
     $('#search-input').on('keyup blur change', function() {
-      search(
+      self.search(
         $('.Navigation ul')[0], 
         this.value.toUpperCase()
       );
@@ -14,11 +16,13 @@ class Search {
   }
 
   search(list, key) {
-    var i, li = $(list).children('li');
+    var childTree, $li, i;
+    const li = $(list).children('li');
     var match = false;
+
     for (i = 0; i < li.length; i++) {
-      var $li = $(li[i]);
-      var childTree = $(li[i]).children('ul');
+      $li = $(li[i]);
+      childTree = $(li[i]).children('ul');
 
       if ($li.parents('.Tree-collection').find('> .Tree-collectionLabel').text().toUpperCase().indexOf(key) !== -1 || 
           $li.text().toUpperCase().indexOf(key) !== -1 || 
