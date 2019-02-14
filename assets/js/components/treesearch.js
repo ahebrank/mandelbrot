@@ -2,7 +2,7 @@
 
 const $  = global.jQuery;
 
-class Search {
+class Treesearch {
 
   constructor() {
     const self = this;
@@ -41,4 +41,4 @@ class Search {
   }
 }
 
-module.exports = Search;
+module.exports = Treesearch;
