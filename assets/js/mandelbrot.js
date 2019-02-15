@@ -11,7 +11,7 @@ const utils      = require('./utils');
 const framer     = require('./components/frame');
 const Tree       = require('./components/tree');
 const Pen        = require('./components/pen');
-const Treesearch = require('./components/treesearch');
+const Search     = require('./components/search');
 
 global.fractal = {
     events: events
@@ -47,4 +47,4 @@ function loadPen(){
     }, 1);
 }
 
-new Treesearch();
+new Search();
